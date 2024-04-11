@@ -1,0 +1,28 @@
+{
+  "extends": ["config:base", ":dependencyDashboard", ":rebaseStalePrs"],
+  "addLabels": ["dependencies"],
+  "labels": ["dependencies"],
+  "packageRules": [
+    {
+      "description": "Automatically merge minor and patch-level updates",
+      "matchUpdateTypes": ["minor", "patch", "digest"],
+      "automerge": true
+    }
+  ],
+  "rebaseWhen": "auto",
+  "rollbackPrs": true,
+  "stabilityDays": 3,
+  "vulnerabilityAlerts": {
+    "enabled": true,
+    "labels": ["security"]
+  },
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": ["^.github/workflows/lint.yaml$"],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>[^\\s]+?)(?: (?:lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?\\s+[A-Za-z0-9_]+?_VERSION\\s*:\\s*[\"']?(?<currentValue>.+?)[\"']?\\s"
+      ]
+    }
+  ]
+}
