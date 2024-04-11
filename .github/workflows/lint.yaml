@@ -1,0 +1,20 @@
+name: lint
+on:
+  - pull_request
+  - push
+jobs:
+  Prettier:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run prettier
+        env:
+          # renovate datasource=npm depName=prettier
+          PRETTIER_VERSION: 3.2.5
+        run: |
+          npx --yes prettier@$PRETTIER_VERSION --check . && exit 0
+          npx prettier@$PRETTIER_VERSION --write
+          git diff
+          exit 1
