@@ -35,37 +35,97 @@ linters-settings:
     confidence: 0
 
 linters:
-  enable-all: false
-  disable-all: true
-  enable:
-    - bodyclose
-    - contextcheck
-    - durationcheck
-    - errcheck
-    - errchkjson
-    - errorlint
-    - exportloopref
-    - gochecksumtype
-    - gocritic
-    - gocyclo
-    - goerr113
-    - gofmt
-    - goimports
-    - gosec
-    - gosimple
-    - govet
-    - ineffassign
-    - misspell
-    - nilerr
-    - noctx
-    - prealloc
-    - reassign
-    - revive
-    - staticcheck
-    - stylecheck
-    - typecheck
-    - unused
-    - whitespace
+  enable-all: true
+  disable-all: false
+  disable:
+    - asasalint
+    - asciicheck
+    - bidichk
+    - containedctx
+    - copyloopvar # requires go >=1.22
+    - cyclop
+    - deadcode # deprecated
+    - decorder
+    - depguard
+    - dogsled
+    - dupl
+    - dupword
+    - errname
+    - execinquery
+    - exhaustive
+    - exhaustivestruct # deprecated
+    - exhaustruct
+    - forbidigo
+    - forcetypeassert
+    - funlen
+    - gci
+    - ginkgolinter
+    - gocheckcompilerdirectives
+    - gochecknoglobals
+    - gochecknoinits
+    - gocognit
+    - goconst
+    - godot
+    - godox
+    - gofumpt
+    - goheader
+    - golint # deprecated
+    - gomnd
+    - gomoddirectives
+    - gomodguard
+    - goprintffuncname
+    - gosmopolitan
+    - grouper
+    - ifshort # deprecated
+    - importas
+    - inamedparam
+    - interfacebloat
+    - interfacer # deprecated
+    - intrange # requires go >=1.22
+    - ireturn
+    - lll
+    - loggercheck
+    - maintidx
+    - makezero
+    - maligned # deprecated
+    - mirror
+    - musttag
+    - nakedret
+    - nestif
+    - nilnil
+    - nlreturn
+    - nolintlint
+    - nonamedreturns
+    - nosnakecase # deprecated
+    - nosprintfhostport
+    - paralleltest
+    - perfsprint
+    - predeclared
+    - promlinter
+    - protogetter
+    - rowserrcheck
+    - scopelint # deprecated
+    - sloglint
+    - spancheck
+    - sqlclosecheck
+    - structcheck # deprecated
+    - tagalign
+    - tagliatelle
+    - tenv
+    - testableexamples
+    - testifylint
+    - testpackage
+    - thelper
+    - tparallel
+    - unconvert
+    - unparam
+    - usestdlibvars
+    - varcheck # deprecated
+    - varnamelen
+    - wastedassign
+    - wrapcheck
+    - wsl
+    - zerologlint
 
 issues:
   exclude-dirs:
