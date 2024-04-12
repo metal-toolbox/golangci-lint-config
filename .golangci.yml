@@ -35,6 +35,8 @@ linters-settings:
     confidence: 0
 
 linters:
+  enable-all: false
+  disable-all: true
   enable:
     - bodyclose
     - contextcheck
@@ -64,9 +66,6 @@ linters:
     - typecheck
     - unused
     - whitespace
-
-  enable-all: false
-  disable-all: true
 
 issues:
   exclude-dirs:
