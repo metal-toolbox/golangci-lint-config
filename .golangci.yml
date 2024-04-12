@@ -12,80 +12,77 @@ service:
   golangci-lint-version: v1.56.2 # use the fixed version to not introduce new linters unexpectedly
 
 linters-settings:
+  depguard:
+    list-type: blacklist
+  dupl:
+    threshold: 100
+  goconst:
+    min-len: 2
+    min-occurrences: 2
+  gocritic:
+    enabled-tags:
+      - experimental
+      - performance
+      - style
+    disabled-checks:
+      - whyNoLint
+      - wrapperFunc
+  gocyclo:
+    min-complexity: 15
+  gofumpt:
+    extra-rules: true
+  goimports:
+    local-prefixes: github.com/golangci/golangci-lint
   govet:
     auto-fix: true
     check-shadowing: true
     settings:
       printf:
         funcs:
-          - (github.com/golangci/golangci-lint/pkg/logutils.Log).Infof
-          - (github.com/golangci/golangci-lint/pkg/logutils.Log).Warnf
           - (github.com/golangci/golangci-lint/pkg/logutils.Log).Errorf
           - (github.com/golangci/golangci-lint/pkg/logutils.Log).Fatalf
-  revive:
-    min-confidence: 0
-  gocyclo:
-    min-complexity: 15
-  dupl:
-    threshold: 100
-  goconst:
-    min-len: 2
-    min-occurrences: 2
-  depguard:
-    list-type: blacklist
+          - (github.com/golangci/golangci-lint/pkg/logutils.Log).Infof
+          - (github.com/golangci/golangci-lint/pkg/logutils.Log).Warnf
+  lll:
+    line-length: 140
   misspell:
     locale: US
     auto-fix: true
-  lll:
-    line-length: 140
-  goimports:
-    local-prefixes: github.com/golangci/golangci-lint
-  gocritic:
-    enabled-tags:
-      - performance
-      - style
-      - experimental
-    disabled-checks:
-      - whyNoLint
-      - wrapperFunc
-  gofumpt:
-    extra-rules: true
+  revive:
+    min-confidence: 0
   whitespace:
     auto-fix: true
 
 linters:
   enable:
-    - errcheck
-    - gosimple
-    - govet
-    - gofmt
-    - gocyclo
-    - ineffassign
-    - stylecheck
-    - misspell
-    - staticcheck
-    - unused
-    - prealloc
-    - typecheck
-    # additional linters
     - bodyclose
-    - gocritic
-    - goerr113
-    - goimports
-    - revive
-    - misspell
-    - noctx
-    - stylecheck
-    - gosec
     - contextcheck
     - durationcheck
+    - errcheck
     - errchkjson
     - errorlint
-    - gochecksumtype
-    - nilerr
-    - reassign
-    - whitespace
     - exportloopref
+    - gochecksumtype
+    - gocritic
+    - gocyclo
+    - goerr113
+    - gofmt
+    - goimports
+    - gosec
+    - gosimple
+    - govet
+    - ineffassign
+    - misspell
+    - nilerr
+    - noctx
+    - prealloc
+    - reassign
+    - revive
+    - staticcheck
+    - stylecheck
+    - typecheck
+    - unused
+    - whitespace
 
   enable-all: false
   disable-all: true
@@ -97,12 +94,12 @@ run:
   skip-files:
     - "(.*/)*.*_test.go"
 
+exclude-use-default: false
 issues:
   exclude-rules:
     - linters:
         - gosec
       text: "weak cryptographic primitive"
-
     - linters:
         - stylecheck
       text: "ST1016"
@@ -128,4 +125,3 @@ issues:
     - (Expect directory permissions to be 0750 or less|Expect file permissions to be 0600 or less)
     # EXC0010 gosec: False positive is triggered by 'src, err := ioutil.ReadFile(filename)'
     - Potential file inclusion via variable
-exclude-use-default: false
