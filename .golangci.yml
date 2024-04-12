@@ -87,10 +87,6 @@ linters:
     - wsl
 
 issues:
-  exclude-dirs:
-    - internal/fixtures
-  exclude-files:
-    - "(.*/)*.*_test.go"
   exclude-rules:
     - linters:
         - stylecheck
