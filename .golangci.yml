@@ -8,7 +8,7 @@
 
 linters-settings:
   dupl:
-    threshold: 100
+    threshold: 125
   goconst:
     min-len: 2
     min-occurrences: 2
@@ -37,95 +37,54 @@ linters-settings:
 linters:
   enable-all: true
   disable-all: false
+  # Linters we don't like
+  # Comments help explain why its disabled or point at ones we should not disable but will take a little work
+  # If its not commented its likely because its just too annoying or we don't find useful
   disable:
-    - asasalint
-    - asciicheck
-    - bidichk
-    - containedctx
     - copyloopvar # requires go >=1.22
     - cyclop
     - deadcode # deprecated
-    - decorder
     - depguard
-    - dogsled
-    - dupl
-    - dupword
-    - errname
-    - execinquery
-    - exhaustive
+    - errname # maybe should be enabled
     - exhaustivestruct # deprecated
     - exhaustruct
     - forbidigo
-    - forcetypeassert
     - funlen
-    - gci
-    - ginkgolinter
-    - gocheckcompilerdirectives
     - gochecknoglobals
     - gochecknoinits
     - gocognit
     - goconst
     - godot
     - godox
-    - gofumpt
-    - goheader
     - golint # deprecated
     - gomnd
-    - gomoddirectives
-    - gomodguard
-    - goprintffuncname
-    - gosmopolitan
-    - grouper
     - ifshort # deprecated
-    - importas
     - inamedparam
     - interfacebloat
     - interfacer # deprecated
     - intrange # requires go >=1.22
-    - ireturn
-    - lll
-    - loggercheck
-    - maintidx
-    - makezero
+    - ireturn # should be enabled, ironlib needs some changes
+    - lll # not previously enabled, ironlib and mctl both fail this
     - maligned # deprecated
-    - mirror
-    - musttag
-    - nakedret
     - nestif
     - nilnil
     - nlreturn
     - nolintlint
-    - nonamedreturns
+    - nonamedreturns # should be enabled, probably
     - nosnakecase # deprecated
-    - nosprintfhostport
     - paralleltest
     - perfsprint
-    - predeclared
-    - promlinter
-    - protogetter
-    - rowserrcheck
     - scopelint # deprecated
-    - sloglint
-    - spancheck
-    - sqlclosecheck
     - structcheck # deprecated
-    - tagalign
     - tagliatelle
-    - tenv
-    - testableexamples
-    - testifylint
+    - tenv # should be enabled
     - testpackage
-    - thelper
-    - tparallel
-    - unconvert
-    - unparam
-    - usestdlibvars
+    - testifylint # should be enabled
+    - thelper # should be enabled
     - varcheck # deprecated
     - varnamelen
-    - wastedassign
     - wrapcheck
     - wsl
-    - zerologlint
 
 issues:
   exclude-dirs:
